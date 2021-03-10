@@ -53,7 +53,7 @@
               <p>{{this.description}}</p>
             </a>
             <button type="button" class="btn" style="background: none;border: none;" data-toggle="modal"
-              data-target="#replyModal">
+              data-target="#replyModal{{this.id}}">
               <i class="far fa-comment" style="color: gray;"></i>
             </button>
             <p style="display:inline; color: grey; vertical-align: middle">{{this.Replies.length}}</p>
@@ -74,7 +74,8 @@
       </li>
 
       <!-- Modal -->
-      <div class="modal fade" id="replyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="replyModal{{this.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -85,21 +86,21 @@
             <div class="modal-body">
               <div class="body-avatar row">
                 <div class="col-2">
-                  <a href="/users/{{tweet.User.id}}/tweets">
-                    <img src="{{tweet.User.avatar}}" class="rounded-circle"
+                  <a href="/users/{{this.User.id}}/tweets">
+                    <img src="{{this.User.avatar}}" class="rounded-circle"
                       style="width: 50px;height: 50px;background: #C4C4C4;">
                   </a>
                 </div>
                 <div class="col-10">
-                  <a href="/users/{{users.id}}/tweets"
+                  <a href="/users/{{this.User.id}}/tweets"
                     style="text-decoration:none; color:black"><strong>{{this.User.name}}</strong>
                   </a>
                   <span style="color:gray;">{{this.User.account}} ．
-                    {{moment ../Tweet.createdAt}}
+                    {{moment this.createdAt}}
                   </span>
-                  <p>{{User.tweets.description}}</p>
+                  <p>{{this.description}}</p>
                   <a style="color:gray; font-size: 15px">回覆給</a>
-                  <span style="color: orange;">{{tweet.User.account}}</span>
+                  <span style="color: orange;">{{this.User.account}}</span>
                 </div>
                 <div class="col-2 mt-5">
                   <a href="/users/{{../user.id}}/tweets">
